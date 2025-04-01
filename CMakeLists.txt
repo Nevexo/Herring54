@@ -13,7 +13,8 @@ project(${PROJECT_NAME} C CXX ASM)
 pico_sdk_init()
 
 # FreeRTOS Kernel
-inclde(extern/FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
+set(FREERTOS_KERNEL_PATH "${CMAKE_CURRENT_SOURCE_DIR}/extern/FreeRTOS-Kernel")
+include(extern/FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
 
 # u8g2 (graphics)
 add_library(u8g2 STATIC
@@ -54,7 +55,9 @@ add_library(u8g2 STATIC
 )
 
 target_include_directories(u8g2 PUBLIC
+    include
     ${CMAKE_CURRENT_LIST_DIR}/extern/u8g2/csrc
+    ${FREERTOS_KERNEL_PATH}/include
 )
 
 # Link u8g2 libraries
