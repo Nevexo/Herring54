@@ -1,17 +1,19 @@
 cmake_minimum_required(VERSION 3.13)
 
 set(PROJECT_NAME Herring54)
-project(${PROJECT_NAME} C CXX ASM)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Pico SDK
 include(extern/pico-sdk/pico_sdk_init.cmake)
+
+project(${PROJECT_NAME} C CXX ASM)
+
 pico_sdk_init()
 
 # FreeRTOS Kernel
-include(extern/FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
+inclde(extern/FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
 
 # u8g2 (graphics)
 add_library(u8g2 STATIC
